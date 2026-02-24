@@ -2,6 +2,8 @@ Alien-sqlite_vec-*
 .build
 *.html
 *.tar.gz
+*.old
+Makefile
 .bash_history
 .env
 _alien/
