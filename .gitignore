@@ -1,0 +1,7 @@
+Alien-sqlite_vec-*
+.build
+*.html
+*.tar.gz
+.bash_history
+.env
+_alien/
