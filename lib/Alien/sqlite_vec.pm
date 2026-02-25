@@ -1,6 +1,6 @@
 package Alien::sqlite_vec;
 # ABSTRACT: sqlite-vec SQLite extension for vector search
-our $VERSION = '0.001';
+our $VERSION = '0.002';
 
 use parent 'Alien::Base';
 
