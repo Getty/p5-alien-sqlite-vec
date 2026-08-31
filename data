@@ -1,0 +1,4 @@
+---
+board:
+  name: Alien::sqlite_vec
+version: 1
