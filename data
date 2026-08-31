@@ -1,0 +1,14 @@
+---
+class: standard
+created: 2026-08-31T04:36:56Z
+id: 1
+priority: high
+status: backlog
+tags:
+- alienfile
+- deps
+title: Declare DBD::SQLite as a build-time prereq for sqlite3ext.h
+updated: 2026-08-31T04:36:56Z
+---
+
+The alienfile build sub locates sqlite3ext.h from File::ShareDir::dist_dir("DBD-SQLite") first, falling back to /usr/include. But cpanfile/Makefile.PL never declare DBD::SQLite, so a clean build host without it (and without a system sqlite3ext.h) fails the compile. Either add DBD::SQLite as a configure/build requires, or document the system-header requirement explicitly. Evidence: alienfile lines 20-36, cpanfile has no DBD::SQLite.
