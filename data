@@ -1,0 +1,14 @@
+---
+class: standard
+created: 2026-08-31T04:37:00Z
+id: 2
+priority: high
+status: backlog
+tags:
+- tests
+- coverage
+title: t/load.t never loads the extension into SQLite
+updated: 2026-08-31T04:37:00Z
+---
+
+load.t only asserts dynamic_libs returns a /vec/ path. It never proves the compiled extension actually loads into DBD::SQLite and creates a vec0 virtual table -- the real reason the dist exists. Add a functional smoke test (skip_all unless DBD::SQLite is available) that enables load_extension, loads the dynamic_libs path, and creates a vec0 table. Evidence: t/load.t lines 5-9.
