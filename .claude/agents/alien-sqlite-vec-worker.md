@@ -2,7 +2,6 @@
 name: alien-sqlite-vec-worker
 description: "Default Alien::sqlite_vec worker — implement, refactor, debug and test this Alien::Base distribution that downloads sqlite-vec v0.1.6 and compiles it into a runtime-loadable SQLite extension. Owns the alienfile probe/download/build pipeline, the cc-into-dynamic/ compile, the sqlite3ext.h lookup, lib/Alien/sqlite_vec.pm and t/. Pre-loaded with Getty's Perl house rules, the Alien and XS patterns, the release flow and this dist's sqlite-vec specifics. Leaves a commit-ready tree; never commits — commits belong to alien-sqlite-vec-release-manager."
 model: inherit
-allowed-tools: Read, Edit, Write, Bash, Glob, Grep
 briefing:
   skills:
     - alien-sqlite-vec-core

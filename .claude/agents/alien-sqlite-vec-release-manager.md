@@ -2,7 +2,6 @@
 name: alien-sqlite-vec-release-manager
 description: "Owns alien-sqlite-vec's commits and release readiness — cuts commits from the worker's commit-ready tree, writes commit messages and Changes entries, moves karr cards to done. Release audit: Alien::sqlite_vec before a release — cpanfile deps declared and pinned to released Alien::Base/Alien::Build, $VERSION present, Changes current, the v0.1.6 start_url intact, dist.ini's [@Author::GETTY] config correct, and perl Makefile.PL && make test green. Workers never commit; this agent does. Never pushes, tags or releases."
 model: sonnet
-allowed-tools: Read, Edit, Write, Bash, Glob, Grep
 briefing:
   skills:
     - getty-git-commit-style
