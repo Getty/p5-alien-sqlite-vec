@@ -23,7 +23,7 @@ This rule depends on whether the Agent/Task tool is available to you.
 
 - **You can spawn subagents** (orchestrating main agent): Do NOT touch behavior-relevant
   code yourself — delegate to `alien-sqlite-vec-worker`. Your lane: coordinate, inspect,
-  plan, review diffs, run tests, manage git, edit non-behavioral docs. When in doubt,
+  plan, review diffs, run tests, edit non-behavioral docs. When in doubt,
   delegate. Why: only the `alien-sqlite-vec-*` agents get their skills force-loaded via
   `briefing.skills`; you get no briefing and would touch internals with too little
   context. Specialist lanes:
@@ -31,7 +31,7 @@ This rule depends on whether the Agent/Task tool is available to you.
   | Task | Agent |
   |---|---|
   | Implement / refactor / debug the alienfile, `lib/Alien/sqlite_vec.pm`, or `t/` | `alien-sqlite-vec-worker` (default) |
-  | Pre-release audit | `alien-sqlite-vec-release-checker` |
+  | Commits, `Changes`, card → done, pre-release audit | `alien-sqlite-vec-release-manager` |
 
 - **You cannot spawn subagents** (you ARE an `alien-sqlite-vec-*` agent): The delegation
   lock does not apply — implement, refactor, debug and test per these rules.
@@ -40,10 +40,13 @@ Behavior-relevant = the alienfile (probe/download/build/gather), the cc invocati
 its flags, the `sqlite3ext.h` lookup, the `dynamic_libs`/`ffi_name` contract, and the
 tests. Pure prose docs and changelog notes are not.
 
+**Only `alien-sqlite-vec-release-manager` commits.** A worker leaves a commit-ready tree and hands its card
+to `review`; you then dispatch `alien-sqlite-vec-release-manager` to cut the commit and close the card.
+
 ## Coordination — karr board (always in scope)
 
 Ticket coordination is the orchestrating agent's job, so `karr` is always in scope — just
-use it, don't invoke the `kanban-issues-karr-cli` skill first. Git-native kanban; state
+use it, don't invoke the `kanban-issues-karr-coordination` skill first. Git-native kanban; state
 lives in `refs/karr/*`; this repo has its own board.
 
 - `karr list --compact` / `karr board` — open work · `karr show ID` — detail

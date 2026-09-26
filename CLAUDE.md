@@ -14,7 +14,7 @@ are in `.claude/rules/alien-sqlite-vec-rules.md` (auto-loaded every turn).
 | Task | Agent |
 |---|---|
 | Implement / refactor / debug the alienfile, `lib/Alien/sqlite_vec.pm`, or `t/` | `alien-sqlite-vec-worker` (default) |
-| Pre-release audit | `alien-sqlite-vec-release-checker` |
+| Commits, `Changes`, card → done, pre-release audit | `alien-sqlite-vec-release-manager` |
 
 The agents carry their knowledge via `briefing.skills` (see `.claude/agents/`); the main
 agent delegates rather than loading them. The sqlite-vec specifics — why share-only, the
