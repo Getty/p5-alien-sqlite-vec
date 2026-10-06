@@ -1,0 +1,20 @@
+---
+class: standard
+created: 2026-10-06T19:40:46Z
+id: 5
+priority: low
+status: backlog
+tags:
+- hygiene
+- build
+- review-2026-10-06
+title: Hand-written Makefile.PL keeps the prereqs in two places
+updated: 2026-10-06T19:40:46Z
+---
+
+The dist tracks its own `Makefile.PL` and sets `no_makemaker = 1` plus `[Run::Test] run = perl Makefile.PL && make test` (`dist.ini:9-12`). The other Alien dists in the fleet (`Alien-Libgit2`, `Alien-libssh`, `Alien-TinyCDB`, `Alien-Tree-Sitter`) get the same Alien::Build::MM Makefile.PL generated through `alien_build = 1`. Here the prereqs live twice - `cpanfile` and `Makefile.PL:12-26` - and whoever resolves k1 (declare DBD::SQLite / File::ShareDir for the build) has to change both or the shipped Makefile.PL stays wrong.
+
+Done when: `dist.ini` uses `alien_build = 1`, the tracked `Makefile.PL` and the `[Run::Test]` block are gone, and `cpanfile` is the only prereq source.
+
+---
+Fleet review 2026-10-06 · kind: hygiene · confidence: verified
