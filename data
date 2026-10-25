@@ -1,0 +1,26 @@
+---
+claimed_at: 2026-10-25T05:29:25Z
+claimed_by: offen-2610
+class: standard
+completed: 2026-10-25T05:29:25Z
+created: 2026-10-06T19:40:42Z
+id: 4
+priority: low
+started: 2026-10-25T05:21:50Z
+status: done
+tags:
+- hygiene
+- dist
+- review-2026-10-06
+title: dist.ini author e-mail uses the domain raudssus.us, unique in the fleet
+updated: 2026-10-25T05:29:25Z
+---
+
+`dist.ini:2`: `author = Torsten Raudssus <torsten@raudssus.us>`. Every other dist under `~/dev` uses `getty@cpan.org`, `torsten@raudssus.de` or `torsten@raudss.us`; `raudssus.us` appears exactly once (`grep -h '^author' ~/dev/p5-*/dist.ini ~/dev/rex-*/dist.ini | sort | uniq -c`) and looks like a blend of the other two. The value lands in META.json and on MetaCPAN as the contact address.
+
+Done when: the address is one of the real ones.
+
+---
+Fleet review 2026-10-06 · kind: hygiene · confidence: verified
+
+d12225d. Adresse getty@cpan.org (in der Flotte am haeufigsten, 40 Dists).
