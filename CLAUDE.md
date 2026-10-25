@@ -8,8 +8,9 @@ SQLite extension, handed to consumers (chiefly `SQLite::VecDB`) via
 ## Delegation
 
 Delegate behavior-relevant code to the right agent instead of touching it yourself — the
-principle, the lane definition, this dist's hazards and the `SQLite::VecDB` twin coupling
-are in `.claude/rules/alien-sqlite-vec-rules.md` (auto-loaded every turn).
+principle is a shared house rule (skilletor bundle `getty-cpan-dist@getty`); the lane
+definition, this dist's hazards and the `SQLite::VecDB` twin coupling are in
+`.claude/rules/alien-sqlite-vec-rules.md` (auto-loaded every turn).
 
 | Task | Agent |
 |---|---|
