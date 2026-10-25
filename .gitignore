@@ -4,6 +4,10 @@ Alien-sqlite_vec-*
 *.tar.gz
 *.old
 Makefile
+Makefile.PL
+MYMETA.*
+blib/
+pm_to_blib
 .bash_history
 .env
 _alien/
