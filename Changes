@@ -1,4 +1,8 @@
 {{$NEXT}}
+  - Declare DBD::SQLite and File::ShareDir as build prerequisites, as the
+    build takes sqlite3ext.h from DBD::SQLite's share dir
+  - Stop the build early with a clear message when sqlite3ext.h is found
+    neither there nor in the system include directories
   - Generate Makefile.PL through the Alien::Build::MM integration of the
     dzil bundle, so the cpanfile is the only place that declares
     prerequisites

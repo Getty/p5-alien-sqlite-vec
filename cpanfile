@@ -8,6 +8,8 @@ on configure => sub {
 on build => sub {
     requires 'Alien::Build', '0.32';
     requires 'Alien::Build::MM', '0.32';
+    requires 'DBD::SQLite';
+    requires 'File::ShareDir';
 };
 
 on test => sub {

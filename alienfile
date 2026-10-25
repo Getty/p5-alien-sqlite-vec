@@ -16,7 +16,8 @@ share {
     my $dlext = $Config::Config{dlext};
     my $shared_flag = $^O eq 'darwin' ? '-dynamiclib' : '-shared';
 
-    # Find sqlite3ext.h — bundled by DBD::SQLite in its share dir
+    # Find sqlite3ext.h — bundled by DBD::SQLite in its share dir (declared
+    # as a build prereq in the cpanfile); a system copy is the fallback
     my $sqlite_inc = '';
     eval {
       require DBD::SQLite;
@@ -34,6 +35,12 @@ share {
         }
       }
     }
+
+    die "Cannot find sqlite3ext.h, which compiling sqlite-vec needs. Install "
+      . "DBD::SQLite (its share dir ships the header) or the system SQLite "
+      . "development headers (libsqlite3-dev, sqlite-devel), so that "
+      . "sqlite3ext.h lies in /usr/include or /usr/local/include.\n"
+      unless $sqlite_inc;
 
     my $stage  = $build->install_prop->{stage};
     my $dyndir = "$stage/dynamic";
