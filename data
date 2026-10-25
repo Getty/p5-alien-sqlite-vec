@@ -1,0 +1,20 @@
+---
+claimed_at: 2026-10-25T05:29:09Z
+claimed_by: offen-2610
+class: standard
+completed: 2026-10-25T05:29:09Z
+created: 2026-08-31T04:36:56Z
+id: 1
+priority: high
+started: 2026-10-25T05:21:37Z
+status: done
+tags:
+- alienfile
+- deps
+title: Declare DBD::SQLite as a build-time prereq for sqlite3ext.h
+updated: 2026-10-25T05:29:09Z
+---
+
+The alienfile build sub locates sqlite3ext.h from File::ShareDir::dist_dir("DBD-SQLite") first, falling back to /usr/include. But cpanfile/Makefile.PL never declare DBD::SQLite, so a clean build host without it (and without a system sqlite3ext.h) fails the compile. Either add DBD::SQLite as a configure/build requires, or document the system-header requirement explicitly. Evidence: alienfile lines 20-36, cpanfile has no DBD::SQLite.
+
+c77ce54 (zusammen mit k3). Entscheidung: DBD::SQLite + File::ShareDir als 'on build' requires in cpanfile (strikt, statt nur dokumentieren); System-Header bleibt Fallback. Also found: der neue fruehe die-Abbruch ist strenger als der cc: auf einem Host mit sqlite3ext.h nur im Default-Include-Pfad des Compilers (z.B. Multiarch-Verzeichnis) kompilierte der alte Code ohne -I erfolgreich, der neue bricht ab (gemessen: mit gepatchten Systempfaden baute der alte Code durch). README nennt die Header-Quelle bereits.
