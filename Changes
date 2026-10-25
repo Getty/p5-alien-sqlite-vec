@@ -1,4 +1,7 @@
 {{$NEXT}}
+  - Generate Makefile.PL through the Alien::Build::MM integration of the
+    dzil bundle, so the cpanfile is the only place that declares
+    prerequisites
   - Use the maintainer's CPAN address as the contact address in META
 
 0.001     2026-02-25 00:07:44Z

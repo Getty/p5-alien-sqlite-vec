@@ -5,6 +5,11 @@ on configure => sub {
     requires 'Alien::Build::MM', '0.32';
 };
 
+on build => sub {
+    requires 'Alien::Build', '0.32';
+    requires 'Alien::Build::MM', '0.32';
+};
+
 on test => sub {
     requires 'Test2::V0';
     requires 'Test::Alien';
