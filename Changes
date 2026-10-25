@@ -1,4 +1,5 @@
 {{$NEXT}}
+  - Use the maintainer's CPAN address as the contact address in META
 
 0.001     2026-02-25 00:07:44Z
   - Initial release
