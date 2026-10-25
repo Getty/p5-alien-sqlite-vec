@@ -1,0 +1,20 @@
+---
+claimed_at: 2026-10-25T05:29:20Z
+claimed_by: offen-2610
+class: standard
+completed: 2026-10-25T05:29:20Z
+created: 2026-08-31T04:37:12Z
+id: 3
+priority: medium
+started: 2026-10-25T05:21:46Z
+status: done
+tags:
+- alienfile
+- dx
+title: Build fails cryptically when sqlite3ext.h is not found
+updated: 2026-10-25T05:29:20Z
+---
+
+When neither DBD::SQLite share dir nor a system sqlite3ext.h exists, $sqlite_inc stays empty and cc runs without -I, producing an opaque "sqlite3ext.h: No such file" compile error attributed to sqlite-vec. Fail early in the build sub with a clear diagnostic naming the missing header and how to provide it. Evidence: alienfile lines 20-46.
+
+c77ce54 (zusammen mit k1). t/header.t treibt die build-sub gegen ein Stub-sqlite-vec.c; gegen das alte alienfile rot (kein die, Extension wird gebaut).
