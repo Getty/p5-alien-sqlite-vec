@@ -27,4 +27,8 @@ jobs:
         run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
       - name: perl -V
         run: perl -V
+      # Alien::Build adds Mozilla::CA as a dynamic prereq of an https download,
+      # so the static metadata the action installs from lacks it.
+      - name: Install Mozilla::CA (dynamic share-build prereq)
+        run: cpanm -nq Mozilla::CA
       - uses: Getty/p5-dist-zilla-pluginbundle-author-getty/.github/actions/dzil-test@v1
