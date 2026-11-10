@@ -21,7 +21,7 @@ The agents carry their knowledge via `briefing.skills` (see `.claude/agents/`); 
 agent delegates rather than loading them. The sqlite-vec specifics — why share-only, the
 `dynamic/libvec.<dlext>` output, the `sqlite3ext.h` lookup, the consumer contract — live
 in skill `alien-sqlite-vec-core` under `.claude/skills/`; the rest of the skills there are
-hardlinks from the shared library, maintained via `manage-skills` in their home repos.
+installed by skilletor from `.claude/skilletor.json` and maintained in their source repos.
 
 ## Build / test
 
